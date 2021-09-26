@@ -25,7 +25,11 @@ const Countrypage = () => {
       <main className="flex flex-col lg:flex-row justify-evenly items-start">
         <div className="px-4 font-bold text-xl lg:hidden flex items-center w-full justify-between my-4">
           <span onClick={openWidgets} className="cursor-pointer">
-            Widgets
+            {language === "Ru"
+              ? "Виджеты"
+              : language === "Uz"
+              ? "Vidjetlar"
+              : "Widgets"}
           </span>{" "}
           <IoChevronDown
             onClick={openWidgets}
