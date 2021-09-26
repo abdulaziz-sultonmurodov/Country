@@ -15,7 +15,12 @@ const Weather = ({ countries, lastSegment }) => {
       isLoading={isLoading}
       errorMessage={errorMessage}
       data={data}
-      lang={countries[lastSegment - 1].language}
+      lang= {language === "Ru"
+      ? "ru"
+      : language === "Uz"
+      ? "uz"
+      : "en"}
+      // lang={countries[lastSegment - 1].language}
       locationLabel={countries[lastSegment - 1].capital}
       unitsLabels={{ temperature: "C", windSpeed: "Km/h" }}
       showForecast
