@@ -24,7 +24,7 @@ const Dropdown = () => {
           aria-expanded="true"
           aria-haspopup="true"
         >
-          {defaultLang}
+          {defaultLang ? defaultLang : language}
 
           <svg
             className="-mr-1 ml-2 h-5 w-5"
