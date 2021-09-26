@@ -10,6 +10,7 @@ const Weather = ({ countries, lastSegment }) => {
     lang: countries[lastSegment - 1].language,
     unit: "metric",
   });
+  const language = localStorage.getItem("language")
   return (
     <ReactWeather
       isLoading={isLoading}
