@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IoChevronDown } from "react-icons/io5";
+import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 import Gallery from "../components/Gallery";
 import Header from "../components/Header";
@@ -33,7 +33,11 @@ const Countrypage = () => {
           </span>{" "}
           <IoChevronDown
             onClick={openWidgets}
-            className="h-6 w-6 cursor-pointer"
+            className={open === false ? "h-6 w-6 cursor-pointer" : "hidden"}
+          />
+          <IoChevronUp
+            onClick={openWidgets}
+            className={open === true ? "h-6 w-6 cursor-pointer" : "hidden"}
           />
         </div>
         <section
