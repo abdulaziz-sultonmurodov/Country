@@ -4,6 +4,7 @@ import Header from "../components/Header";
 
 const Homepage = () => {
   const [url, setUrl] = useState("/");
+  const [language, setLanguage] = useState("");
   useEffect(() => {
     const path = window.location.pathname;
     setUrl(path);
@@ -11,11 +12,14 @@ const Homepage = () => {
 
   const [searchWord, setSearchWord] = useState("");
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const store = localStorage.getItem("language");
+    setLanguage(store);
+  }, []);
   return (
     <>
       <Header url={url} setSearchWord={setSearchWord} />
-      <Card searchWord={searchWord} />
+      <Card searchWord={searchWord} language={language} />
     </>
   );
 };

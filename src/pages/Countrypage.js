@@ -12,7 +12,7 @@ const Countrypage = () => {
   const lastSegment = url.split("/").pop();
   const video = countries[lastSegment - 1].video;
   const { pathname } = useLocation();
-
+  const language = localStorage.getItem("language");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -47,30 +47,59 @@ const Countrypage = () => {
               alt={countries[lastSegment - 1].name}
             />
             <p className="text-white font-bold absolute text-4xl">
-              {countries[lastSegment - 1].capital}
+              {language === "Ru"
+                ? countries[lastSegment - 1].capitalRu
+                : language === "Uz"
+                ? countries[lastSegment - 1].capitalUz
+                : countries[lastSegment - 1].capital}
             </p>
           </div>
           <section className="flex flex-col items-center justify-start">
             <div className=" rounded-b-lg px-4">
               <div className="pt-8 pb-8">
                 <h1 className="text-2xl font-bold text-gray-700 text-center">
-                  {countries[lastSegment - 1].capital}
+                  {language === "Ru"
+                    ? countries[lastSegment - 1].capitalRu
+                    : language === "Uz"
+                    ? countries[lastSegment - 1].capitalUz
+                    : countries[lastSegment - 1].capital}
                 </h1>
                 <p className="text-sm text-gray-600 text-center">
-                  {countries[lastSegment - 1].name}
+                  {language === "Ru"
+                    ? countries[lastSegment - 1].nameRu
+                    : language === "Uz"
+                    ? countries[lastSegment - 1].nameUz
+                    : countries[lastSegment - 1].name}
                 </p>
                 <p className="text-sm text-gray-600 mt-5 leading-6">
-                  {countries[lastSegment - 1].info}
+                  {language === "Ru"
+                    ? countries[lastSegment - 1].infoRu
+                    : language === "Uz"
+                    ? countries[lastSegment - 1].infoUz
+                    : countries[lastSegment - 1].info}
                 </p>
               </div>
             </div>
           </section>
           <section className="my-10 flex flex-col justify-center items-center">
-            <h1 className="text-gray-800 text-3xl mb-4">Gallery</h1>
+            <h1 className="text-gray-800 text-3xl mb-4">
+              {" "}
+              {language === "Ru"
+                ? "Галерея"
+                : language === "Uz"
+                ? "Galereya"
+                : "Gallery"}
+            </h1>
             <Gallery countries={countries} lastSegment={lastSegment} />
           </section>
           <section className="flex flex-col justify-center items-center">
-            <h1 className="text-gray-800 text-3xl mb-4">City Tour</h1>
+            <h1 className="text-gray-800 text-3xl mb-4">
+              {language === "Ru"
+                ? "Экскурсия по городу"
+                : language === "Uz"
+                ? "Shahar bo'ylab sayohat"
+                : "City Tour"}
+            </h1>
             <iframe
               width="100%"
               height="300"
@@ -81,7 +110,13 @@ const Countrypage = () => {
             ></iframe>
           </section>
           <section className="my-10 px-0 lg:mx-auto flex flex-col items-center">
-            <h1 className="text-gray-800 text-3xl mb-4">Map</h1>
+            <h1 className="text-gray-800 text-3xl mb-4">
+              {language === "Ru"
+                ? "Kарта"
+                : language === "Uz"
+                ? "Xarita"
+                : "Map"}
+            </h1>
             <SimpleMap countries={countries} lastSegment={lastSegment} />
           </section>
         </section>
