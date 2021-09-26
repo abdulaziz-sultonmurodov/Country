@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const DateCountry = ({ countries, lastSegment }) => {
   let date = new Date();
@@ -93,26 +93,13 @@ const DateCountry = ({ countries, lastSegment }) => {
       ? weeksUz[week]
       : weeks[week];
 
-  const [hours, setHours] = useState("");
+  const timeZone = new Date().toLocaleTimeString("en-GB", {
+    timeZone: countries[lastSegment - 1].timeZone,
+  });
 
-  function time() {
-    let d = new Date();
-    let s = d.getSeconds();
-    let m = d.getMinutes();
-    let h = d.getHours();
-    setHours(
-      ("0" + (h - countries[lastSegment - 1].timeZone)).substr(-2) +
-        ":" +
-        ("0" + m).substr(-2) +
-        ":" +
-        ("0" + s).substr(-2)
-    );
-  }
-
-  setInterval(time, 1000);
   return (
     <aside className="bg-blue-500 text-white font-bold py-6 my-2 rounded-lg">
-      <section className="text-4xl text-center mb-4">{hours}</section>
+      <section className="text-4xl text-center mb-4">{timeZone}</section>
       <section className="text-center text-xl tracking-widest">
         {day}/{monthName}/{year}
       </section>
